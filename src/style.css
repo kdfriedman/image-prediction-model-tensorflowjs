@@ -136,7 +136,10 @@ header {
 
 .file-uploader__loader-container {
   position: fixed;
-  inset: 0px;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
   background-color: rgba(19, 33, 68, 0.25) !important;
 }
 
