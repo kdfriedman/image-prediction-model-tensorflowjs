@@ -95,16 +95,20 @@ const FileUploader = () => {
 
     // async wrapper to handle async readURL function
     (async () => {
-      // read file
-      const url = await readURL(file);
-      const uploadImageLabelElement = document.getElementById(
-        "uploadImageModule"
-      );
-      // update state with new image base64 string
-      updateBase64(url);
+      try {
+        // read file
+        const url = await readURL(file);
+        const uploadImageLabelElement = document.getElementById(
+          "uploadImageModule"
+        );
+        // update state with new image base64 string
+        updateBase64(url);
 
-      // add class to label element to change cursor styling
-      uploadImageLabelElement.classList.add("image-active");
+        // add class to label element to change cursor styling
+        uploadImageLabelElement.classList.add("image-active");
+      } catch (err) {
+        console.error(err);
+      }
     })();
   };
 
@@ -138,17 +142,21 @@ const FileUploader = () => {
 
     // async wrapper to handle async readURL function
     (async () => {
-      // read file
-      const url = await readURL(file);
-      const uploadImageLabelElement = document.getElementById(
-        "uploadImageModule"
-      );
+      try {
+        // read file
+        const url = await readURL(file);
+        const uploadImageLabelElement = document.getElementById(
+          "uploadImageModule"
+        );
 
-      // update state with new image base64 string
-      updateBase64(url);
+        // update state with new image base64 string
+        updateBase64(url);
 
-      // add class to label element to change cursor styling
-      uploadImageLabelElement.classList.add("image-active");
+        // add class to label element to change cursor styling
+        uploadImageLabelElement.classList.add("image-active");
+      } catch (err) {
+        console.error(err);
+      }
     })();
   };
 
@@ -169,13 +177,17 @@ const FileUploader = () => {
 
     // async wrapper to handle async getImagePrediction function
     (async () => {
-      // update loadingState hook to render loading icon
-      updateLoadingState(true);
-      // retrieve new image tag to pass into tensorflow model
-      const currentImgElement = document.getElementById("uploadedImage");
-      const predictionResults = await getImagePrediction(currentImgElement);
-      setImagePredictionResults(predictionResults);
-      updateLoadingState(false);
+      try {
+        // update loadingState hook to render loading icon
+        updateLoadingState(true);
+        // retrieve new image tag to pass into tensorflow model
+        const currentImgElement = document.getElementById("uploadedImage");
+        const predictionResults = await getImagePrediction(currentImgElement);
+        setImagePredictionResults(predictionResults);
+        updateLoadingState(false);
+      } catch (err) {
+        console.error(err);
+      }
     })();
   };
 
